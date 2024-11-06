@@ -1,0 +1,2 @@
+protocol ble;
+device meter supports ble;

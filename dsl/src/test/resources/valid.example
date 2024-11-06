@@ -1,0 +1,4 @@
+protocol BLE;
+device LightBulb supports BLE;
+server SmartHomeServer supports BLE;
+link over BLE connects LightBulb, SmartHomeServer;

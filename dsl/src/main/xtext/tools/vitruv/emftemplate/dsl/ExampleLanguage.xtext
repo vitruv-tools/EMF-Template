@@ -1,0 +1,19 @@
+grammar tools.vitruv.emftemplate.dsl.ExampleLanguage
+    with org.eclipse.xtext.common.Terminals
+
+import "http://vitruv.tools/emftemplate/model" as model
+
+System returns model::System:
+    (protocols+=Protocol|components+=Device|components+=Server|links+=Link)*;
+
+Protocol returns model::Protocol:
+    'protocol' name=ID ';';
+
+Device returns model::Device:
+    'device' name=ID 'supports' supportedProtocols+=[model::Protocol]';';
+
+Server returns model::Server:
+    'server' name=ID 'supports' supportedProtocols+=[model::Protocol] (',' supportedProtocols+=[model::Protocol])* ';';
+
+Link returns model::Link:
+    'link' 'over' protocol=[model::Protocol] 'connects' components+=[model::Component] (',' components+=[model::Component])* ';';
