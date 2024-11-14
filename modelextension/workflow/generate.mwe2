@@ -1,0 +1,26 @@
+module tools.vitruv.emftemplate.modelextension
+
+import org.eclipse.emf.mwe2.ecore.EcoreGenerator
+import org.eclipse.emf.mwe.utils.StandaloneSetup
+
+var workspaceRoot = ".."
+
+Workflow {
+
+    bean = StandaloneSetup {
+        scanClassPath = true
+        platformUri = workspaceRoot
+
+        uriMap = {
+            from = "http://vitruv.tools/emftemplate/model"
+            to = "platform:/resource/tools.vitruv.emftemplate.model/src/main/ecore/model.ecore"
+        }
+    }
+
+    component = EcoreGenerator {
+        genModel = "platform:/resource/tools.vitruv.emftemplate.modelextension/src/main/ecore/extended-model.genmodel"
+        srcPath = "platform:/resource/tools.vitruv.emftemplate.modelextension/target/generated-sources/ecore"
+        generateCustomClasses = false
+    }
+
+}

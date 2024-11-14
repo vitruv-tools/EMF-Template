@@ -26,6 +26,7 @@
     <module>dsl</module>
     <module>logic</module>
     <module>model</module>
+    <module>modelextension</module>
   </modules>
 
   <!-- Additional Repositories -->

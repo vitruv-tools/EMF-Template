@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="extendedmodel" nsURI="http://vitruv.tools/emftemplate/extended-model" nsPrefix="xmodel">
+  <eClassifiers xsi:type="ecore:EClass" name="CloudService" eSuperTypes="http://vitruv.tools/emftemplate/model#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partOf" lowerBound="1"
+        upperBound="1" eType="ecore:EClass http://vitruv.tools/emftemplate/model#//Device"/>
+  </eClassifiers>
+</ecore:EPackage>

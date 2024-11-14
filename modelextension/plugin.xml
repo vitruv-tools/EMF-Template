@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated extended-model -->
+      <package
+            uri="http://vitruv.tools/emftemplate/extended-model"
+            class="tools.vitruv.emftemplate.extendedmodel.ExtendedModelPackage"
+            genModel="src/main/ecore/extended-model.genmodel"/>
+   </extension>
+
+</plugin>
