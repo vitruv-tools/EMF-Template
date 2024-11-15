@@ -13,7 +13,7 @@
 
   <artifactId>tools.vitruv.emftemplate.model</artifactId>
 
-  <name>Application Model</name>
+  <name>Model</name>
   <description />
 
   <build>

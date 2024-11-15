@@ -13,7 +13,7 @@
 
   <artifactId>tools.vitruv.emftemplate.logic</artifactId>
 
-  <name>Application Logic</name>
+  <name>Logic</name>
   <description />
 
   <build>

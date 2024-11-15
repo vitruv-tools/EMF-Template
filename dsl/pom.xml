@@ -13,7 +13,7 @@
 
   <artifactId>tools.vitruv.emftemplate.dsl</artifactId>
 
-  <name>Application DSL</name>
+  <name>DSL</name>
   <description />
 
   <build>
