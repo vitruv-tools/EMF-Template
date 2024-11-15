@@ -24,6 +24,7 @@
   <modules>
     <module>demo</module>
     <module>dsl</module>
+    <module>imports</module>
     <module>logic</module>
     <module>model</module>
     <module>modelextension</module>
@@ -78,6 +79,11 @@
         <groupId>org.eclipse.emf</groupId>
         <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
         <version>2.37.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.platform</groupId>
+        <artifactId>org.eclipse.core.runtime</artifactId>
+        <version>3.26.100</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.xtext</groupId>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tools.vitruv</groupId>
+    <artifactId>tools.vitruv.emftemplate.imports</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>tools.vitruv.emftemplate.imports.dependencywrapper</artifactId>
+
+  <name>Imports Dependency Wrapper</name>
+  <description />
+
+  <repositories>
+    <repository>
+      <id>sdq-demo-metamodels</id>
+      <name>SDQ Demo Metamodels</name>
+      <url>https://kit-sdq.github.io/updatesite/release/metamodels/demo/${repo.sdq-demo-metamodels.version}</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>sdq-demo-metamodels</groupId>
+      <artifactId>edu.kit.ipd.sdq.metamodels.families</artifactId>
+      <version>1.9.0.202311201524</version>
+    </dependency>
+    <dependency>
+      <groupId>sdq-demo-metamodels</groupId>
+      <artifactId>edu.kit.ipd.sdq.metamodels.persons</artifactId>
+      <version>1.9.0.202311201524</version>
+    </dependency>
+    <dependency>
+      <groupId>sdq-demo-metamodels</groupId>
+      <artifactId>edu.kit.ipd.sdq.metamodels.insurance</artifactId>
+      <version>1.9.0.202311201524</version>
+    </dependency>
+  </dependencies>
+</project>
