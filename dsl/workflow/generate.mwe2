@@ -22,7 +22,6 @@ Workflow {
 
                 runtime = {
                     root = workspaceRoot
-                    ecoreModel = "${workspaceRoot}/target/generated-sources/xtext-ecore"
                     src = "${workspaceRoot}/src/main/java"
                     srcGen = "${workspaceRoot}/target/generated-sources/xtext-java"
                 }
