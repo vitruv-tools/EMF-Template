@@ -171,21 +171,33 @@ uriMap = {
 
 ### `tools.vitruv.emftemplate.p2dependencies`
 
-In order to use p2 dependencies from Eclipse updatesites in our Maven build, we must add the updatesite as a repository in the `pom.xml` file, as shown below.
+This submodules shows how to include and repackage p2 dependencies from Eclipse updatesites.
+Repackaging the dependencies is necessary to avoid missing transitive dependencies in dependents of our modules, as they usually cannot handle p2 repositories.
+In the `emfcompare` submodule, it is demonstrated how to include and repackage a p2 dependency, while in the submodule `logic`, the wrapper module `emfcompare` is included as dependency.
+Notice that you need to have one wrapper submodule per p2 dependency to avoid conflicting files with the same name in the repackaged JAR.
+
+In order to reference p2 repositories, we use the `p2-layout-resolver` plugin from the Artifactory repository.
+In order to include p2 dependencies from Eclipse updatesites, we must then add the updatesite as a repository in the `pom.xml` file, as shown below.
 The `id` specifies the `groupId` we can use to include the dependencies from the updatesite in our `pom.xml`.
 The `url` specified the URL of the updatesite and often (not for nightly builds) includes the version.
 For the `layout` tag, we need to use the value `p2`.
 
 ```
-<repository>
-    <id>emf-compare</id>
-    <name>EMF Compare</name>
-    <url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202212280858</url>
-    <layout>p2</layout>
-</repository>
+<properties>
+    <repo.emf-compare.version>3.3</repo.emf-compare.version>
+</properties>
+
+<repositories>
+    <repository>
+        <id>emf-compare</id>
+        <name>EMF Compare</name>
+        <layout>p2</layout>
+        <url>https://download.eclipse.org/modeling/emf/compare/updates/releases/${repo.emf-compare.version}</url>
+    </repository>
+</repositories>
 ```
 
-After adding the p2 updatesite as a repository, dependencies from it can be added like usualy Maven dependencies, as shown in the example below.
+After adding the p2 updatesite as a repository, dependencies from it can be added like usually Maven dependencies, as shown in the example below.
 
 ```
 <dependency>
@@ -194,3 +206,12 @@ After adding the p2 updatesite as a repository, dependencies from it can be adde
     <version>3.5.3.202212280858</version>
 </dependency>
 ```
+
+To repacked the p2 dependency in our generated JAR, we use the `maven-shade-plugin`, which is already configured in the Maven build parent.
+Additionally, we need the `flatten-maven-plugin` to remove the p2 repository definitions from the POM in our generated JAR.
+First, the `flatten-maven-plugin` generates the effective POM, in the file `.flattened-pom.xml`, and removes certain, defined sections.
+The `maven-shade-plugin` then extracts the contents of the dependencies and generates a JAR, merging the content of the submodules initial JAR.
+The included dependencies are removed from the POM, which is stored as `dependency-reduced-pom.xml`.
+
+The `maven-shade-plugin` generates the main JAR, as well as a `sources` JAR, but if we want to deploy the submodule, we need to generate a `javadoc` JAR as well.
+As a preliminary solution, we use the `maven-jar-plugin` to generate an empty `javadoc` JAR.
