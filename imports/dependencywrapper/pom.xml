@@ -16,6 +16,10 @@
   <name>Imports Dependency Wrapper</name>
   <description />
 
+  <properties>
+    <repo.sdq-demo-metamodels.version>1.9.0</repo.sdq-demo-metamodels.version>
+  </properties>
+
   <repositories>
     <repository>
       <id>sdq-demo-metamodels</id>
