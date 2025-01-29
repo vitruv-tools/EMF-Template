@@ -47,7 +47,7 @@ public class ComparerTest {
     private static ResourceSet wrapInResourceSet(EObject object, String name) {
         var resourceFactory = new ResourceFactoryImpl();
 
-        var resource = resourceFactory.createResource(URI.createURI(name));
+        var resource = resourceFactory.createResource(URI.createFileURI(name));
         resource.getContents().add(object);
 
         var resourceSet = new ResourceSetImpl();
