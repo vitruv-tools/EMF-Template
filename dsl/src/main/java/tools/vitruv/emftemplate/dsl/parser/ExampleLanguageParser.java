@@ -17,7 +17,7 @@ public class ExampleLanguageParser {
     
     public Result<System, List<Issue>> parse(String path) {
         // load
-        var resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(URI.createURI(path));
+        var resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(URI.createFileURI(path));
         var resourceSet = resourceServiceProvider.get(ResourceSet.class);
         var resource = resourceSet.getResource(URI.createFileURI(path), true);
 
