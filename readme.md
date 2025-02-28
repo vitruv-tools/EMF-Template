@@ -210,6 +210,7 @@ After adding the p2 updatesite as a repository, dependencies from it can be adde
 To repacked the p2 dependency in our generated JAR, we use the `maven-shade-plugin`, which is already configured in the Maven build parent.
 Additionally, we need the `flatten-maven-plugin` to remove the p2 repository definitions from the POM in our generated JAR.
 First, the `flatten-maven-plugin` generates the effective POM, in the file `.flattened-pom.xml`, and removes certain, defined sections.
+In order to avoid having the `description` tag of the module POM removed, which would cause the release to OSSRH to fail, the `description` tag is required to be non-empty.
 The `maven-shade-plugin` then extracts the contents of the dependencies and generates a JAR, merging the content of the submodules initial JAR.
 The included dependencies are removed from the POM, which is stored as `dependency-reduced-pom.xml`.
 
